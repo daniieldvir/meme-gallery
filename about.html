@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./css/style.css" rel="stylesheet" />
+    <title>Build Your Memo</title>
+</head>
+
+<body>
+    <nav class="nav-container container">
+        <img class="logo" src="img/logo.png" />
+        <ul class="nav clean-list">
+            <li><a class="nav-gallery" data-trans="gallery" href="index.html">Gallery</a></li>
+            <li><a class="nav-memes" data-trans="memes" href="memes.html">Memes</a></li>
+            <li><a class="nav-about" data-trans="about" href="about.html">About</a></li>
+            <li class="nav-lang">
+                <select onchange="onSetLang(value)" class="lang-select">
+                    <option value="en" data-trans="english">English</option>
+                    <option value="he" data-trans="hebrew">Hebrew</option>
+                </select>
+            </li>
+        </ul>
+    </nav>
+
+    <main class="main-about">
+        <article class="about">
+            <img src="img/Camel.jpeg" class="about-img">
+            <div class="about-text">
+                <h2>About me.</h2>
+                <p class="paragraph1">My name is Camel.</p>
+                <p class="paragraph2">I am an 8 year old mixed breed dog, my mother adopted me at the age of six months.
+                </p>
+                <p class="paragraph2">
+                    A month ago my mother told me that she was going to stay at home for a few months, I thought it
+                    would be fun and we would play all day and go for walks ... how I was wrong 🙈🙉🙊
+                </p>
+            </div>
+        </article>
+    </main>
+
+    <footer class="footer-container container">
+        <img class="logo" src="img/logo.png" />
+        <p data-trans="rights">all rights reserved 2019</p>
+            <ul class="social-media clean-list flex">
+                <li>
+                    <a data-trans="facebook" href="www.facebook.com">
+                        <img class="facebook-img editor-pic-size" src="img/facebook-logo.png"></button>
+                    </a>
+                </li>
+
+                <li>
+                    <a data-trans="github" href="https://github.com/">
+                        <img class="github-img editor-pic-size" src="img/github-logo.png"></button>
+                    </a>
+                </li>
+            </ul>
+    </footer>
+
+    <script src="js/util.js"></script>
+    <script src="js/storage-service.js"></script>
+    <script src="js/meme-service.js"></script>
+    <script src="js/meme-editor-service.js"></script>
+    <script src="js/meme-controller.js"></script>
+    <script src="js/i18n-service.js"></script>
+</body>
+</html>

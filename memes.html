@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./css/style.css" rel="stylesheet" />
+    <title>Build Your Memo</title>
+</head>
+<body>
+    <header class="header">
+    <nav class="nav-container container">
+        <img class="logo" src="img/logo.png" />
+        <ul class="nav clean-list">
+            <li><a class="nav-gallery" data-trans="gallery" href="index.html">Gallery</a></li>
+            <li><a class="nav-memes" data-trans="memes" href="memes.html">Memes</a></li>
+            <li><a class="nav-about" data-trans="about" href="about.html">About</a></li>
+            <li class="nav-lang">
+                <select onchange="onSetLang(value)" class="lang-select">
+                    <option value="en" data-trans="english">English</option>
+                    <option value="he" data-trans="hebrew">Hebrew</option>
+                </select>
+            </li>
+        </ul>
+    </nav>
+
+
+    
+    <footer class="footer-container container">
+        <img class="logo" src="img/logo.png" />
+        <p data-trans="rights">all rights reserved 2019</p>
+    </footer>
+
+    <script src="js/util.js"></script>
+    <script src="js/storage-service.js"></script>
+    <script src="js/meme-service.js"></script>
+    <script src="js/meme-editor-service.js"></script>
+    <script src="js/meme-controller.js"></script>
+    <script src="js/i18n-service.js"></script>
+</body>
+
+</html>

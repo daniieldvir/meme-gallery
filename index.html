@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./css/style.css" rel="stylesheet" />
+    <title>Build Your Memo</title>
+</head>
+
+<body onload="onInit()">
+    <nav class="nav-container container">
+        <img class="logo" src="img/logo.png" />
+        <ul class="nav clean-list">
+            <li><a class="nav-gallery" data-trans="gallery" href="index.html">Gallery</a></li>
+            <li><a class="nav-memes" data-trans="memes" href="memes.html">Memes</a></li>
+            <li><a class="nav-about" data-trans="about" href="about.html">About</a></li>
+            <li class="nav-lang">
+                <select onchange="onSetLang(value)" class="lang-select">
+                    <option value="en" data-trans="english">English</option>
+                    <option value="he" data-trans="hebrew">Hebrew</option>
+                </select>
+            </li>
+        </ul>
+    </nav>
+
+    <section class="search-section">
+        <div class="search-container flex">
+            <label for="user-search-template"></label>
+            <input type="text" class="search" name="search" value="Enter KeyWord">
+            <button class="search-btn" onclick="onSearchPic">
+                <img src="/img/font.png" class="pic-size"></button>
+        </div>
+    </section>
+
+    <section class="gallery-section">
+        <container class="gallery-container grid-container"> </container>
+    </section>
+
+    <section class="editor-section">
+        <container class="flex-container">
+            <div class="canvas-container">
+                <canvas id="my-canvas" height="500" width="500"></canvas>
+
+                <div class="editor-container">
+                    <input class="text-input" placeholder="Enter You'r Text Here" type="text"
+                        oninput="onDrawText(this.value)"></input>
+
+                    <div class="editor-btn-section">
+                        <button class="btn-editor" onclick="ondDrawAddLine()">
+                            <img class="editor-icon editor-pic-size" src="editor-img/add.png"></button>
+
+                        <button class="btn-editor" onclick="onSwitchLine()">
+                            <img class="editor-icon editor-pic-size" src="editor-img/up-downe.png"></button>
+
+                        <button class="btn-editor" onclick="onMoveLine(-1)">
+                            <img class="editor-icon editor-pic-size" src="editor-img/arrow-up.png"></button>
+
+                        <button class="btn-editor" onclick="onMoveLine(+1)">
+                            <img class="editor-icon editor-pic-size" src="editor-img/arrow-down.png"></button>
+
+                        <button class="btn-editor" onclick="onClearText()">
+                            <img class="editor-icon editor-pic-size" src="editor-img/trash.png"></button>
+                    </div>
+
+                    <div class="editor-btn-section">
+
+                        <button class="btn-editor" onclick="onChangeFontSize(+2)">
+                            <img class="editor-icon editor-pic-size" src="editor-img/increase_Font.png"></button>
+
+                        <button class="btn-editor" onclick="onChangeFontSize(-2)">
+                            <img class="editor-icon editor-pic-size" src="editor-img/decrease_Font.png"></button>
+
+                        <button class="btn-editor" onclick="onGoToPrevLine()">
+                            <img class="editor-icon editor-pic-size" src="editor-img/back.png"></button>
+
+                        <button class="btn-editor" onclick="onGoToPrevLine()">
+                            <img class="editor-icon editor-pic-size" src="editor-img/forwards.png"></button>
+
+                        <button class="btn-editor" onclick="onChangeAlign('left')">
+                            <img class="editor-icon editor-pic-size"
+                                src="editor-img/justify-align-to-right.png"></button>
+
+                        <button class="btn-editor" onclick="onChangeAlign('center')">
+                            <img class="editor-icon editor-pic-size"
+                                src="editor-img/center-text-alignment.png"></button>
+
+                        <button class="btn-editor" onclick="onChangeAlign('right')">
+                            <img class="editor-iconeditor-pic-size editor-pic-size"
+                                src="editor-img/justify-align-to-right.png"></button>
+                    </div>
+
+                    <div class="editor-btn-section">
+                        <button class="btn-editor">
+                            <input class="input-color" type=color value="#deb887"
+                                oninput="onChangeStrokeColor(this.value)"></input>
+                            <label for="stroke-color">
+                                <img class="editor-icon editor-pic-size-selection"
+                                    src="editor-img/text-stroke.png"></label></button>
+
+                        <button class="btn-editor">
+                            <input class="input-color" type=color value="#008b8b"
+                                oninput="onChangeFillColor(this.value)"></input>
+                            <label for="fill-color">
+                                <img class="editor-icon editor-pic-size-selection"
+                                    src="editor-img/fill-color.png"></label></button>
+                    </div>
+
+                    <div class="editor-btn-section">
+                        <select class="font-input" oninput="onChangeFontType(this.value)">
+                            <option value="Impact">Impact</option>
+                            <option value="Arial">Arial</option>
+                            <option value="Cursive">Cursive</option>
+                            <option value="dodko">Dodko</option>
+                            <option value="Nerko">Nerko</option>
+                            <option value="Passion">Passion</option>
+                        </select>
+                        <button title="Clear all text" onclick="onClearAll()">Clear All</button>
+                    </div>
+
+                    <div class="editor-btn-section">
+                        <button class="display-on-memes-page" onclick="onSaveMeme()">Save</button>
+                        <button class="href-btn"><a href="#" onclick="onDownload(this)"
+                                download="">Download</a></button>
+                        <button class="post-on-facebook">Share To Facebook</button>
+                    </div>
+                </div>
+            </div>
+        </container>
+    </section>
+
+
+    <footer class="footer-container container">
+        <img class="logo" src="img/logo.png" />
+        <p data-trans="rights">all rights reserved 2019</p>
+    </footer>
+
+    <script src="js/util.js"></script>
+    <script src="js/storage-service.js"></script>
+    <script src="js/meme-service.js"></script>
+    <script src="js/meme-editor-service.js"></script>
+    <script src="js/meme-controller.js"></script>
+    <script src="js/i18n-service.js"></script>
+</body>
+
+</html>
