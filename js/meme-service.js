@@ -1,8 +1,10 @@
 'use strict';
 
-var gKeywords = [
-
-]
+var gKeywords = {
+    'politic': 3, 'tramp': 1, 'funny': 8, 'dog': 2, 'cute': 3, 'love': 2,
+    'happy': 8, 'animal': 3, 'baby': 4, 'cat': 1, 'sleep': 1, 'movie': 7, 'tv': 7, 'Obama': 1,
+    'sport': 1, 'honesty': 1, 'putin': 2
+}
 
 var gImgs = [
     { id: 1, url: 'meme-imgs/1.jpg', keywords: ['politic', 'tramp', 'funny'] },
@@ -25,6 +27,41 @@ var gImgs = [
     { id: 18, url: 'meme-imgs/18.jpg', keywords: ['movie', 'tv',] },
 ];
 
+var gStickers = {
+
+    selectedStickerId: 0,
+
+    sticker: [{
+        id: 1,
+        url: 'stickers/1.png',
+        positionX: 225,
+        positionY: 225,
+        isDragging: false,
+        height: 100,
+        width: 100,
+    },
+    {
+        id: 2,
+        url: 'stickers/2.png',
+        positionX: 225,
+        positionY: 225,
+        isDragging: false,
+        height: 100,
+        width: 100
+
+    },
+    {
+        id: 3,
+        url: 'stickers/3.png',
+        positionX: 225,
+        positionY: 225,
+        isDragging: false,
+        height: 100,
+        width: 100
+
+    }],
+}
+
 var gMeme = {
     selectedImgId: 0,
     selectedLineIdx: 0,
@@ -34,21 +71,22 @@ var gMeme = {
         font: 'impact',
         size: 40,
         align: 'center',
-        OutlineColor: 'black',
+        outlineColor: 'black',
         fillColor: 'white',
-        positionX: 225,
-        positionY: 430,
-        
-    }, {
+        positionX: 250,
+        positionY: 90,
+    },
+    {
         txt: 'Text Here',
         font: 'impact',
         size: 40,
         align: 'center',
-        OutlineColor: 'black',
+        outlineColor: 'black',
         fillColor: 'white',
-        positionX: 225,
-        positionY: 430,
-    }]
+        positionX: 250,
+        positionY: 410,
+    }
+    ],
 }
 
 function getImages() {
@@ -57,5 +95,15 @@ function getImages() {
 
 function getMeme() {
     return gMeme
+}
+
+function getSticker() {
+    return gStickers
+}
+
+function editMemePic(key, value) {
+    if (gMeme.lines.length === 0) return
+    const lineIdx = gMeme.selectedLineIdx
+    gMeme.lines[lineIdx][key] = value
 }
 

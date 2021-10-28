@@ -147,31 +147,101 @@ li.active {
 
 .gallery-container {
     cursor: pointer;
+    margin-bottom: 40px;
 }
 
 
 /* CANVAS */
 .canvas-container {
     display: none;
+    background-color: #e3e3e3;
+    flex-direction: column;
+
+
 }
 
 canvas {
-    margin: 40px 20px 40px;
-
+    margin: 40px;
     border: 1px solid black;
     background-color: rgb(250, 245, 236);
-    border-radius: 0.2rem;
 }
 
 /* EDITOR */
+.editor-container {
+    margin: 0 40px 40px; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .text-input {
-    width: 330px;
-    height: 50px;
-    margin: 15px;
+    width: 312px;
+    height: 30px;
+    border-radius: 6px;
+    background-color: #fff;
+    border-color: #ffffff;
 }
 .editor-btn-section {
     margin: 15px;
+    display: flex;
+    align-items: center;
 }
+
+.btn-editor {
+    width: 40px;
+    height: 40px;
+    border-radius: 6px;
+    background-color: #fff;
+    border-color: #ffffff;
+}
+
+.btn-editor-fill {
+    width: 80px;
+    height: 40px;
+    border-radius: 6px;
+    background-color: #fff;
+    border-color: #ffffff;
+}
+
+.font-change {
+    width: 80px;
+    height: 40px;
+    border-radius: 6px;
+    background-color: #fff;
+    border-color: #ffffff;
+}
+
+.share, .href-btn {
+    width: 90px;
+    height: 40px;
+    border-radius: 6px;
+    background-color: #fff;
+    border-color: #ffffff;
+    text-decoration: none
+}
+
+.share a, .href-btn a {
+    text-decoration: none;
+}
+
+.file-input-btn {
+    width: 200px;
+    height: 40px;
+    border-radius: 6px;
+    background-color: #fff;
+    border-color: #ffffff;
+    text-decoration: none
+}
+
+.file-input {
+    background-color: none;
+}
+
+/* MOBILE- BTN */
+.btn-menu {
+    display: none;
+}
+
 
 /* ABOUT */
 .main-about {
@@ -186,7 +256,7 @@ canvas {
 .about-img {
     width: 200px;
     height: 300px;
-    margin-right: 40px;    
+    margin-inline-end: 40px;  
 }
 
 .about-text {
@@ -201,6 +271,18 @@ canvas {
     text-transform: uppercase;
     font-size: 1.75rem;
     color: #4F4E4E ; 
+}
+
+.about-contact a {
+    text-decoration: none;
+}
+
+.linkedin, .facebook, .github {
+    width: 20px;
+    margin: 5px;
+    padding: 5px;
+    border-radius: 6px;
+    background-color: #ff7f00;
 }
 
 
@@ -218,8 +300,24 @@ canvas {
     margin: 0 auto;
     font-size: 19px;
     padding-bottom: 0 !important;
-    margin-top: 80px;
 }
+
+
+
+@media (min-width: 1060px) {
+
+    .canvas-container {
+        flex-direction: row;
+        justify-content: center;
+
+    }
+
+    .editor-container {
+        margin: 40px 20px 40px; 
+    }
+
+}
+ 
 
 
 

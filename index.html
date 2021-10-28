@@ -6,23 +6,27 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="./css/style.css" rel="stylesheet" />
+    <link href="./css/mobile-nav.css" rel="stylesheet" />
+
     <title>Build Your Memo</title>
 </head>
 
 <body onload="onInit()">
+    <div class="main-screen" onclick="toggleMenu()"></div>
     <nav class="nav-container container">
         <img class="logo" src="img/logo.png" />
         <ul class="nav clean-list">
-            <li><a class="nav-gallery" data-trans="gallery" href="index.html">Gallery</a></li>
-            <li><a class="nav-memes" data-trans="memes" href="memes.html">Memes</a></li>
-            <li><a class="nav-about" data-trans="about" href="about.html">About</a></li>
+            <li><a class="nav-gallery" data-trans="gallery" onclick="onGoToGalleryPage()">Gallery</a></li>
+            <li><a class="nav-memes" data-trans="memes" onclick="onGoToMemesPage()">Memes</a></li>
+            <li><a class="nav-about" data-trans="about" onclick="onGoToAboutPage()">About</a></li>
             <li class="nav-lang">
-                <select onchange="onSetLang(value)" class="lang-select">
+                <select onchange="onSetLang(this.value)" class="lang-select">
                     <option value="en" data-trans="english">English</option>
                     <option value="he" data-trans="hebrew">Hebrew</option>
                 </select>
             </li>
         </ul>
+        <button class="btn-menu" onclick="toggleMenu()">☰</button>
     </nav>
 
     <section class="search-section">
@@ -45,19 +49,19 @@
 
                 <div class="editor-container">
                     <input class="text-input" placeholder="Enter You'r Text Here" type="text"
-                        oninput="onDrawText(this.value)"></input>
+                        oninput="onChangeText(this.value)"></input>
 
                     <div class="editor-btn-section">
-                        <button class="btn-editor" onclick="ondDrawAddLine()">
+                        <button class="btn-editor" onclick="onDrawAnotherLine()">
                             <img class="editor-icon editor-pic-size" src="editor-img/add.png"></button>
 
                         <button class="btn-editor" onclick="onSwitchLine()">
                             <img class="editor-icon editor-pic-size" src="editor-img/up-downe.png"></button>
 
-                        <button class="btn-editor" onclick="onMoveLine(-1)">
+                        <button class="btn-editor" onclick="onUpDownLine(-2)">
                             <img class="editor-icon editor-pic-size" src="editor-img/arrow-up.png"></button>
 
-                        <button class="btn-editor" onclick="onMoveLine(+1)">
+                        <button class="btn-editor" onclick="onUpDownLine(+2)">
                             <img class="editor-icon editor-pic-size" src="editor-img/arrow-down.png"></button>
 
                         <button class="btn-editor" onclick="onClearText()">
@@ -66,17 +70,11 @@
 
                     <div class="editor-btn-section">
 
-                        <button class="btn-editor" onclick="onChangeFontSize(+2)">
+                        <button class="btn-editor" onclick="onChangeFontSize(2)">
                             <img class="editor-icon editor-pic-size" src="editor-img/increase_Font.png"></button>
 
                         <button class="btn-editor" onclick="onChangeFontSize(-2)">
                             <img class="editor-icon editor-pic-size" src="editor-img/decrease_Font.png"></button>
-
-                        <button class="btn-editor" onclick="onGoToPrevLine()">
-                            <img class="editor-icon editor-pic-size" src="editor-img/back.png"></button>
-
-                        <button class="btn-editor" onclick="onGoToPrevLine()">
-                            <img class="editor-icon editor-pic-size" src="editor-img/forwards.png"></button>
 
                         <button class="btn-editor" onclick="onChangeAlign('left')">
                             <img class="editor-icon editor-pic-size"
@@ -92,43 +90,81 @@
                     </div>
 
                     <div class="editor-btn-section">
-                        <button class="btn-editor">
+                        <div class="editor-btn-section">
+                            <select class="font-change" onchange="onChangeFontType(value)">
+                                <option>Impact</option>
+                                <option>Arial</option>
+                                <option>Cursive</option>
+                                <option>Nerko</option>
+                            </select>
+                        </div>
+
+                        <button class="btn-editor-fill">
                             <input class="input-color" type=color value="#deb887"
-                                oninput="onChangeStrokeColor(this.value)"></input>
-                            <label for="stroke-color">
-                                <img class="editor-icon editor-pic-size-selection"
-                                    src="editor-img/text-stroke.png"></label></button>
+                                oninput="onChangeStrokeColor(value)"></input>
+                            <img class="editor-icon editor-pic-size-selection" src="editor-img/text-stroke.png">
+                        </button>
+                        <button class="btn-editor-fill">
+                            <input class="input-color" name="fill-color" type=color value="#008b8b"
+                                oninput="onChangeFillColor(value)"></input>
+                            <img class="editor-icon editor-pic-size-selection" src="editor-img/fill-color.png">
+                        </button>
 
-                        <button class="btn-editor">
-                            <input class="input-color" type=color value="#008b8b"
-                                oninput="onChangeFillColor(this.value)"></input>
-                            <label for="fill-color">
-                                <img class="editor-icon editor-pic-size-selection"
-                                    src="editor-img/fill-color.png"></label></button>
                     </div>
 
-                    <div class="editor-btn-section">
-                        <select class="font-input" oninput="onChangeFontType(this.value)">
-                            <option value="Impact">Impact</option>
-                            <option value="Arial">Arial</option>
-                            <option value="Cursive">Cursive</option>
-                            <option value="dodko">Dodko</option>
-                            <option value="Nerko">Nerko</option>
-                            <option value="Passion">Passion</option>
-                        </select>
-                        <button title="Clear all text" onclick="onClearAll()">Clear All</button>
-                    </div>
+
+                    <div class="stickers-container" title="choose-stickers" data-trans="stickers"></div>
 
                     <div class="editor-btn-section">
-                        <button class="display-on-memes-page" onclick="onSaveMeme()">Save</button>
+                        <button class="save-memes-page btn-editor" onclick="onSaveMemeToStorage()">Save</button>
                         <button class="href-btn"><a href="#" onclick="onDownload(this)"
-                                download="">Download</a></button>
-                        <button class="post-on-facebook">Share To Facebook</button>
+                                download="my-img.jpg">Download</a></button>
+                        <p class="user-msg" hidden></p>
+                        <button class="share" class="btn" onclick="uploadImg()"><span class="share-container"></span>
+                        </button>
+
+                    </div>
+                    <div>
+                        <button class="file-input-btn">
+                            <input class="file-input" type="file" name="image" onchange="onImgInput(event)" />
+                        </button>
                     </div>
                 </div>
             </div>
         </container>
     </section>
+
+    <main class=main-memes></main>
+
+    <main class="main-about">
+        <article class="about">
+            <img src="img/Camel.jpeg" class="about-img">
+            <div class="about-text">
+                <h2 data-trans="about-h2">About me.</h2>
+                <p class="paragraph1" data-trans="about-details-p1">My name is Camel.</p>
+                <p class="paragraph2" data-trans="about-details-p2">I am an 8 year old mixed breed dog, my mother adopted me at the age of six months.
+                </p>
+                <p class="paragraph2" data-trans="about-details-p3">
+                    A month ago my mother told me that she was going to stay at home for a few months, I thought it
+                    would be fun and we would play all day and go for walks ... how I was wrong 🙈🙉🙊
+                </p>
+                <div class="about-contact">
+                    <a href="https://www.linkedin.com/in/daniiel-dvir-06154769">
+                        <img class="linkedin" src="img/linkedin-logo.png" />
+                    </a>
+
+                    <a href="https://www.facebook.com/daniiel.dvir/">
+                        <img class="facebook" src="img/facebook-logo.png" />
+                    </a>
+
+                    <a href="https://github.com/daniieldvir">
+                        <img class="github" src="img/github-logo.png" />
+                    </a>
+                </div>
+            </div>
+        </article>
+
+    </main>
 
 
     <footer class="footer-container container">
@@ -136,11 +172,11 @@
         <p data-trans="rights">all rights reserved 2019</p>
     </footer>
 
-    <script src="js/util.js"></script>
     <script src="js/storage-service.js"></script>
     <script src="js/meme-service.js"></script>
     <script src="js/meme-editor-service.js"></script>
     <script src="js/meme-controller.js"></script>
+    <script src="js/gallery-controller.js"></script>
     <script src="js/i18n-service.js"></script>
 </body>
 
