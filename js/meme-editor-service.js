@@ -32,7 +32,7 @@ function addStickers(id) {
     sticker.src = onGetStickerUrl(id);
     console.log(sticker.src);
     sticker.onload = () => {
-        gCtx.drawImage(sticker, 0, 0, gCanvas.width, gCanvas.height)
+        gCtx.drawImage(sticker, 0, 0)
     }
 }
 
