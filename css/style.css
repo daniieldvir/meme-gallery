@@ -137,7 +137,6 @@ li.active {
     flex-direction: column;
     justify-content: flex-end;
     align-items: center;
-    margin-bottom: 10px;
 }
 
 .search-more {
@@ -333,7 +332,9 @@ canvas {
 }
 
 .about {
-    padding: 80px 0 80px ;
+    padding: 40px 0 ;
+    margin: 25px 15%;
+    align-items: center;
 }
 
 .about-img {
@@ -343,7 +344,7 @@ canvas {
 }
 
 .about-text {
-    font-family: Montserrat, Montserrat;
+    font-family: Montserrat, sans-serif;
     margin: 0;
     justify-items: stretch;
     align-items: end;
@@ -361,13 +362,12 @@ canvas {
 }
 
 .linkedin, .facebook, .github {
-    width: 20px;
+    width: 30px;
     margin: 5px;
     padding: 5px;
     border-radius: 6px;
     background-color: #ff7f00;
 }
-
 
 /* FOOTER */
 .footer-container {

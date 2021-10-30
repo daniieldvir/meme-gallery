@@ -117,10 +117,6 @@ var gTrans = {
         en: `Enter You'r Text Here`,
         he: 'הכנס טקסט פה',
     },
-    'saved-memes': {
-        en: `Your Saved Memes`,
-        he: 'המימים השמורים שלך',
-    },
     'about-h2': {
         en: 'about me',
         he: 'קצת עלי',
