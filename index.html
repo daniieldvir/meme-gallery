@@ -15,7 +15,7 @@
 <body onload="onInit()">
     <div class="main-screen" onclick="toggleMenu()"></div>
     <nav class="nav-container container">
-        <img class="logo" src="img/logo.png" />
+        <img class="logo" src="img/logo.png" onclick="onGoToGalleryPage()" />
         <ul class="nav clean-list">
             <li><a class="nav-gallery" data-trans="gallery" onclick="onGoToGalleryPage()">Gallery</a></li>
             <li><a class="nav-memes" data-trans="memes" onclick="onGoToMemesPage()">Memes</a></li>
@@ -78,10 +78,10 @@
                         <button class="btn-editor pointer" onclick="onSwitchLine()">
                             <img class="editor-icon editor-pic-size" src="editor-img/up-downe.png"></button>
 
-                        <button class="btn-editor pointer" onclick="onUpDownLine(-2)">
+                        <button class="btn-editor pointer" onclick="onUpDownLine(-3)">
                             <img class="editor-icon editor-pic-size" src="editor-img/arrow-up.png"></button>
 
-                        <button class="btn-editor pointer" onclick="onUpDownLine(+2)">
+                        <button class="btn-editor pointer" onclick="onUpDownLine(+3)">
                             <img class="editor-icon editor-pic-size" src="editor-img/arrow-down.png"></button>
 
                         <button class="btn-editor pointer" onclick="onClearText()">
@@ -96,15 +96,15 @@
                         <button class="btn-editor pointer" onclick="onChangeFontSize(-2)">
                             <img class="editor-icon editor-pic-size" src="editor-img/decrease_Font.png"></button>
 
-                        <button class="btn-editor pointer" onclick="onChangeAlign('left')">
+                        <button class="btn-editor pointer" onclick="onChangeAlign('right')">
                             <img class="editor-icon editor-pic-size"
-                                src="editor-img/justify-align-to-right.png"></button>
+                                src="editor-img/justify-align-to-left.png"></button>
 
                         <button class="btn-editor pointer" onclick="onChangeAlign('center')">
                             <img class="editor-icon editor-pic-size"
                                 src="editor-img/center-text-alignment.png"></button>
 
-                        <button class="btn-editor pointer" onclick="onChangeAlign('right')">
+                        <button class="btn-editor pointer" onclick="onChangeAlign('left')">
                             <img class="editor-iconeditor-pic-size editor-pic-size"
                                 src="editor-img/justify-align-to-right.png"></button>
                     </div>

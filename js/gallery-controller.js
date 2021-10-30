@@ -25,17 +25,17 @@ function onRenderGallery() {
     document.querySelector('.gallery-container').innerHTML = strHtml
 }
 
-onRenderMemeFromStorage()
-function onRenderMemeFromStorage() {
-    var savedImgs = loadFromStorage(KEY_SAVE_MEME)
-    console.log('savedImgs', savedImgs);
-    var strHtml = ``
-    savedImgs.forEach(savedImg => {
-        strHtml += `<img src="${selectedImgId}" id="${savedImg.id}">`
-    })
-    var elRenderMemeFromStorage = document.querySelector('.save-memes-container')
-    elRenderMemeFromStorage.innerHTML = strHtml
-}
+// onRenderMemeFromStorage()
+// function onRenderMemeFromStorage() {
+//     var savedImgs = loadFromStorage(KEY_SAVE_MEME)
+//     console.log('savedImgs', savedImgs);
+//     var strHtml = ``
+//     savedImgs.forEach(savedImg => {
+//         strHtml += `<img src="${selectedImgId}" id="${savedImg.id}">`
+//     })
+//     var elRenderMemeFromStorage = document.querySelector('.save-memes-container')
+//     elRenderMemeFromStorage.innerHTML = strHtml
+// }
 
 function onRenderKeyWords() {
     var keyWords = getKeyWords()
