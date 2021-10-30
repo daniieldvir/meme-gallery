@@ -1,9 +1,9 @@
 'use strict';
 
 var gKeywords = {
-    'politic': 3, 'tramp': 1, 'funny': 8, 'dog': 2, 'cute': 3, 'love': 2,
-    'happy': 8, 'animal': 3, 'baby': 4, 'cat': 1, 'sleep': 1, 'movie': 7, 'tv': 7, 'Obama': 1,
-    'sport': 1, 'honesty': 1, 'putin': 2
+    'politic': 3, 'funny': 8, 'dog': 2, 'cute': 3, 'love': 2,
+    'happy': 8, 'animal': 3, 'baby': 4, 'cat': 1, 'sleep': 1, 'movie': 7, 'tv': 7,
+    'sport': 1, 'honesty': 1,
 }
 
 var gImgs = [
@@ -27,44 +27,20 @@ var gImgs = [
     { id: 18, url: 'meme-imgs/18.jpg', keywords: ['movie', 'tv',] },
 ];
 
-var gStickers = {
-
-    selectedStickerId: 0,
-
-    sticker: [{
-        id: 1,
-        url: 'stickers/1.png',
-        positionX: 225,
-        positionY: 225,
-        isDragging: false,
-        height: 100,
-        width: 100,
-    },
-    {
-        id: 2,
-        url: 'stickers/2.png',
-        positionX: 225,
-        positionY: 225,
-        isDragging: false,
-        height: 100,
-        width: 100
-
-    },
-    {
-        id: 3,
-        url: 'stickers/3.png',
-        positionX: 225,
-        positionY: 225,
-        isDragging: false,
-        height: 100,
-        width: 100
-
-    }],
-}
+var gStickers = [
+    {id: 1, url: 'stickers/1.png', positionX: 225, positionY: 225, size:80, isDragging: false },
+    {id: 2, url: 'stickers/2.png', positionX: 225, positionY: 225, height: 32, width: 85, isDragging: false },
+    {id: 3, url: 'stickers/3.png', positionX: 225, positionY: 225, height: 32, width: 85, isDragging: false },
+    {id: 4, url: 'stickers/4.png', positionX: 225, positionY: 225, height: 32, width: 85,isDragging: false },
+    {id: 5, url: 'stickers/5.png', positionX: 225, positionY: 225, height: 32, width: 85, isDragging: false },
+    {id: 6, url: 'stickers/6.png', positionX: 225, positionY: 225, height: 32, width: 85, isDragging: false },
+    {id: 7, url: 'stickers/7.png', positionX: 225, positionY: 225, height: 32, width: 85, isDragging: false },
+]
 
 var gMeme = {
     selectedImgId: 0,
     selectedLineIdx: 0,
+    selectedStickerId: 0,
 
     lines: [{
         txt: 'Text Here',
@@ -75,6 +51,7 @@ var gMeme = {
         fillColor: 'white',
         positionX: 250,
         positionY: 90,
+        isDrag: false,
     },
     {
         txt: 'Text Here',
@@ -85,8 +62,8 @@ var gMeme = {
         fillColor: 'white',
         positionX: 250,
         positionY: 410,
-    }
-    ],
+        isDrag: false,
+    }],
 }
 
 function getImages() {
@@ -97,8 +74,25 @@ function getMeme() {
     return gMeme
 }
 
-function getSticker() {
+function getStickers() {
     return gStickers
+}
+
+function getSaveMeme() {
+    return gSaveMeme
+}
+
+function getKeyWords() {
+    return gKeywords
+}
+
+function getText() {
+    return gText
+}
+
+function addClickOnKeyword(txt) {
+    gKeywords[txt]++
+
 }
 
 function editMemePic(key, value) {
@@ -106,4 +100,5 @@ function editMemePic(key, value) {
     const lineIdx = gMeme.selectedLineIdx
     gMeme.lines[lineIdx][key] = value
 }
+
 

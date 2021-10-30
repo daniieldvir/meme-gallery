@@ -11,6 +11,7 @@
     <title>Build Your Memo</title>
 </head>
 
+
 <body onload="onInit()">
     <div class="main-screen" onclick="toggleMenu()"></div>
     <nav class="nav-container container">
@@ -20,113 +21,136 @@
             <li><a class="nav-memes" data-trans="memes" onclick="onGoToMemesPage()">Memes</a></li>
             <li><a class="nav-about" data-trans="about" onclick="onGoToAboutPage()">About</a></li>
             <li class="nav-lang">
-                <select onchange="onSetLang(this.value)" class="lang-select">
-                    <option value="en" data-trans="english">English</option>
-                    <option value="he" data-trans="hebrew">Hebrew</option>
+
+                <select class="sel-lang" onchange="onSetLang(this.value)">
+                    <option value="en">English</option>
+                    <option value="he">עברית</option>
                 </select>
             </li>
         </ul>
         <button class="btn-menu" onclick="toggleMenu()">☰</button>
     </nav>
 
+    <!-- SEARCH -->
     <section class="search-section">
-        <div class="search-container flex">
-            <label for="user-search-template"></label>
-            <input type="text" class="search" name="search" value="Enter KeyWord">
-            <button class="search-btn" onclick="onSearchPic">
-                <img src="/img/font.png" class="pic-size"></button>
+        <div class="search-by-typing flex">
+            <input type="text" class="search" name="search" placeholder="Enter keyword"
+             onclick="onFilterPic(value)">
+            <img src="/img/search-icon.png" class="filter-btn">
+        </input>
+                <option  value="politic"></option>
+                <option  value="funny"></option>
+                <option  value="dog"></option>
+                <option  value="cute"></option>
+                <option  value="love"></option>
+                <option  value="happy"></option>
+                <option  value="animal"></option>
+                <option  value="baby"></option>
+                <option  value="cat"></option>
+                <option  value="sleep"></option>
+                <option  value="movie"></option>
+                <option  value="tv"></option>
+                <option  value="sport"></option>
+                <option  value="honesty"></option>
         </div>
+        <div class="search-by-keywords"></div>
     </section>
 
+    <!-- GALLERY -->
     <section class="gallery-section">
         <container class="gallery-container grid-container"> </container>
     </section>
 
     <section class="editor-section">
         <container class="flex-container">
-            <div class="canvas-container">
+            <div class="canvas-container" hidden>
                 <canvas id="my-canvas" height="500" width="500"></canvas>
 
                 <div class="editor-container">
-                    <input class="text-input" placeholder="Enter You'r Text Here" type="text"
+                    <input class="text-input" data-trans="text-input" type="text"
                         oninput="onChangeText(this.value)"></input>
 
                     <div class="editor-btn-section">
-                        <button class="btn-editor" onclick="onDrawAnotherLine()">
+                        <button class="btn-editor pointer" onclick="onDrawAnotherLine()">
                             <img class="editor-icon editor-pic-size" src="editor-img/add.png"></button>
 
-                        <button class="btn-editor" onclick="onSwitchLine()">
+                        <button class="btn-editor pointer" onclick="onSwitchLine()">
                             <img class="editor-icon editor-pic-size" src="editor-img/up-downe.png"></button>
 
-                        <button class="btn-editor" onclick="onUpDownLine(-2)">
+                        <button class="btn-editor pointer" onclick="onUpDownLine(-2)">
                             <img class="editor-icon editor-pic-size" src="editor-img/arrow-up.png"></button>
 
-                        <button class="btn-editor" onclick="onUpDownLine(+2)">
+                        <button class="btn-editor pointer" onclick="onUpDownLine(+2)">
                             <img class="editor-icon editor-pic-size" src="editor-img/arrow-down.png"></button>
 
-                        <button class="btn-editor" onclick="onClearText()">
+                        <button class="btn-editor pointer" onclick="onClearText()">
                             <img class="editor-icon editor-pic-size" src="editor-img/trash.png"></button>
                     </div>
 
                     <div class="editor-btn-section">
 
-                        <button class="btn-editor" onclick="onChangeFontSize(2)">
+                        <button class="btn-editor pointer" onclick="onChangeFontSize(2)">
                             <img class="editor-icon editor-pic-size" src="editor-img/increase_Font.png"></button>
 
-                        <button class="btn-editor" onclick="onChangeFontSize(-2)">
+                        <button class="btn-editor pointer" onclick="onChangeFontSize(-2)">
                             <img class="editor-icon editor-pic-size" src="editor-img/decrease_Font.png"></button>
 
-                        <button class="btn-editor" onclick="onChangeAlign('left')">
+                        <button class="btn-editor pointer" onclick="onChangeAlign('left')">
                             <img class="editor-icon editor-pic-size"
                                 src="editor-img/justify-align-to-right.png"></button>
 
-                        <button class="btn-editor" onclick="onChangeAlign('center')">
+                        <button class="btn-editor pointer" onclick="onChangeAlign('center')">
                             <img class="editor-icon editor-pic-size"
                                 src="editor-img/center-text-alignment.png"></button>
 
-                        <button class="btn-editor" onclick="onChangeAlign('right')">
+                        <button class="btn-editor pointer" onclick="onChangeAlign('right')">
                             <img class="editor-iconeditor-pic-size editor-pic-size"
                                 src="editor-img/justify-align-to-right.png"></button>
                     </div>
 
                     <div class="editor-btn-section">
                         <div class="editor-btn-section">
-                            <select class="font-change" onchange="onChangeFontType(value)">
-                                <option>Impact</option>
-                                <option>Arial</option>
-                                <option>Cursive</option>
-                                <option>Nerko</option>
+                            <select class="font-change pointer" onchange="onChangeFontType(value)">
+                                <option data-trans="impact">Impact</option>
+                                <option data-trans="arial">Arial</option>
+                                <option data-trans="cursive">Cursive</option>
+                                <option data-trans="nerko">Nerko</option>
                             </select>
                         </div>
 
                         <button class="btn-editor-fill">
-                            <input class="input-color" type=color value="#deb887"
+                            <input class="input-color pointer" type=color value="#deb887"
                                 oninput="onChangeStrokeColor(value)"></input>
                             <img class="editor-icon editor-pic-size-selection" src="editor-img/text-stroke.png">
                         </button>
                         <button class="btn-editor-fill">
-                            <input class="input-color" name="fill-color" type=color value="#008b8b"
+                            <input class="input-color pointer" name="fill-color" type=color value="#008b8b"
                                 oninput="onChangeFillColor(value)"></input>
                             <img class="editor-icon editor-pic-size-selection" src="editor-img/fill-color.png">
                         </button>
 
                     </div>
 
-
-                    <div class="stickers-container" title="choose-stickers" data-trans="stickers"></div>
+                    <!-- STICKERS -->
+                    <section class="stickers-container">
+                        <container class="stickers-container grid-container"> </container>
+                    </section>
 
                     <div class="editor-btn-section">
-                        <button class="save-memes-page btn-editor" onclick="onSaveMemeToStorage()">Save</button>
-                        <button class="href-btn"><a href="#" onclick="onDownload(this)"
+                        <button class="save-memes-page pointer btn-editor" data-trans="save"
+                            onclick="onSaveMemeToStorage()">Save</button>
+                        <button class="href-btn pointer"><a href="#" data-trans="download" onclick="downloadImg(this)"
                                 download="my-img.jpg">Download</a></button>
                         <p class="user-msg" hidden></p>
-                        <button class="share" class="btn" onclick="uploadImg()"><span class="share-container"></span>
+                        <button class="share pointer" class="btn pointer" onclick="uploadImg()"><span class="share-container"
+                                data-trans="share"></span>
                         </button>
 
                     </div>
                     <div>
                         <button class="file-input-btn">
-                            <input class="file-input" type="file" name="image" onchange="onImgInput(event)" />
+                            <input class="file-input pointer" type="file" name="image" data-trans="choose-file"
+                                onchange="onImgInput(event)" />
                         </button>
                     </div>
                 </div>
@@ -134,15 +158,25 @@
         </container>
     </section>
 
-    <main class=main-memes></main>
+    <!-- SAVE-MEMES-PAGE -->
+
+    <main class="main-memes">
+        <div>
+            <h2 class="main-headline" data-trans="saved-memes">Your Saved Memes</h2>
+            <div class="save-memes-container"></div>
+        </div>
+    </main>
+
+    <!-- ABOUT-PAGE -->
 
     <main class="main-about">
         <article class="about">
-            <img src="img/Camel.jpeg" class="about-img">
+            <img src="img/camel1.jpeg" class="about-img">
             <div class="about-text">
                 <h2 data-trans="about-h2">About me.</h2>
                 <p class="paragraph1" data-trans="about-details-p1">My name is Camel.</p>
-                <p class="paragraph2" data-trans="about-details-p2">I am an 8 year old mixed breed dog, my mother adopted me at the age of six months.
+                <p class="paragraph2" data-trans="about-details-p2">I am an 8 year old mixed breed dog, my mother
+                    adopted me at the age of six months.
                 </p>
                 <p class="paragraph2" data-trans="about-details-p3">
                     A month ago my mother told me that she was going to stay at home for a few months, I thought it

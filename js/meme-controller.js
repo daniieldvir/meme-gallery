@@ -1,31 +1,33 @@
 'use strict';
 
-var gNewColor;
-var gNewStrokeColor;
-
-
 function onRenderCanvas(imgId) {
     gCanvas = document.getElementById('my-canvas');
     gCtx = gCanvas.getContext('2d');
 
+    // if (gLoadedImg) drawLoadedImg(gLoadedImg)
+    // else drawImg()
+
     document.querySelector('.canvas-container').style.display = 'flex'
+    document.querySelector('.stickers-container').style.display = 'flex'
     document.querySelector('.gallery-container').style.display = 'none'
-    document.querySelector('.search-container').style.display = 'none'
+    document.querySelector('.search-by-typing').style.display = 'none'
+    document.querySelector('.search-by-keywords').style.display = 'none'
     document.querySelector('.main-memes').style.display = 'none'
     document.querySelector('.main-about').style.display = 'none'
     document.querySelector('.gallery-container').style.display = 'none'
 
-    uploadImg()
     clearCanvas()
     getImgSelected(+imgId)
     drawImg()
+    uploadImg()
+    addListeners()
 }
+
 
 function onChangeText(txt) {
     editMemePic('txt', txt)
     drawImg()
 }
-
 
 function onDrawAnotherLine() {
     drawAnotherLine()
@@ -45,7 +47,6 @@ function onChangeFontSize(num) {
 function onUpDownLine(num) {
     upDownLine(num)
     drawImg()
-
 }
 
 function onSwitchLine() {
@@ -78,7 +79,7 @@ function onGetMemeUrl(id) {
 }
 
 function onGetStickerUrl(id) {
-    return getSticker(id).url
+    return getStickerImg(id).url
 }
 
 function onGetMemeText(lineIdx) {
@@ -86,19 +87,12 @@ function onGetMemeText(lineIdx) {
 }
 
 function onSaveMemeToStorage() {
-    saveMemeToStorage() 
+    saveMemeToStorage()
 }
 
-
-
-
-
-
-
-
-
-
-
+function onAddStickers(id) {
+    addStickers(id)
+}
 
 /// set language
 function onSetLang(lang) {
