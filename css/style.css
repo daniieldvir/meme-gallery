@@ -25,7 +25,7 @@
 
 /* BASIC */
 html {
-    font-family: Montserrat;
+    font-family: Montserrat, sans-serif
 }
 
 body {
@@ -97,6 +97,7 @@ img {
     height: 66px;
     background-color: #ff7f00;
     margin: 0;
+    font-family: Montserrat, sans-serif;
 }
 
 ul {
@@ -342,7 +343,7 @@ canvas {
 }
 
 .about-text {
-    font-family: Montserrat, sans-serif;
+    font-family: Montserrat, Montserrat;
     margin: 0;
     justify-items: stretch;
     align-items: end;
