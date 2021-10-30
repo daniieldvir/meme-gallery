@@ -43,7 +43,7 @@ function onRenderKeyWords() {
     var idx = 0
     for (var keyWord in keyWords) {
         var fontSize = 16 + keyWords[keyWord]
-        strHtml += `<button onclick="onSearchPic('${keyWord}', true)" data-trans="${keyWord}" class="search-btn ${keyWord}" 
+        strHtml += `<button onclick="onFilterPic('${keyWord}', true)" data-trans="${keyWord}" class="search-btn ${keyWord}" 
                     style="border: none;text-decoration: none;font-size:${fontSize}px">${keyWord}</button>`
         idx++
         if (idx === 6) {
