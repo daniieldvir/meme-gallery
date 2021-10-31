@@ -1,28 +1,12 @@
 'use strict';
 
 function onRenderCanvas(imgId) {
-    gCanvas = document.getElementById('my-canvas');
-    gCtx = gCanvas.getContext('2d');
-
-    // if (gLoadedImg) drawLoadedImg(gLoadedImg)
-    // else drawImg()
-
-    document.querySelector('.canvas-container').style.display = 'flex'
-    document.querySelector('.stickers-container').style.display = 'flex'
-    document.querySelector('.gallery-container').style.display = 'none'
-    document.querySelector('.search-by-typing').style.display = 'none'
-    document.querySelector('.search-by-keywords').style.display = 'none'
-    document.querySelector('.main-memes').style.display = 'none'
-    document.querySelector('.main-about').style.display = 'none'
-    document.querySelector('.gallery-container').style.display = 'none'
-
-    clearCanvas()
-    getImgSelected(+imgId)
-    drawImg()
-    uploadImg()
-    addListeners()
+    renderCanvas(imgId)
 }
 
+function onChangeCanvasPage() {
+    changeCanvasPage()
+}
 
 function onChangeText(txt) {
     editMemePic('txt', txt)
@@ -86,12 +70,42 @@ function onGetMemeText(lineIdx) {
     return getMemeText(lineIdx)
 }
 
+function onClearCanvas() {
+    clearCanvas()
+}
+
 function onSaveMemeToStorage() {
     saveMemeToStorage()
 }
 
 function onAddStickers(id) {
     addStickers(id)
+}
+
+function drawImg(id) {
+    var img = new Image()
+    img.src = onGetMemeUrl(id);
+    img.onload = () => {
+        gCtx.drawImage(img, 0, 0, gCanvas.width, gCanvas.height)
+        drawText()
+        drawStickers()
+    }
+}
+
+function drawSticker(url, positionX, positionY, id) {
+    var sticker = new Image()
+    sticker.src = url;
+    sticker.onload = () => {
+        gCtx.drawImage(sticker, positionX, positionY)
+        gCtx.size = gStickers[id-1].size
+    }
+}
+
+////Bonus - SAVE TO STORAGE
+var gSaveMeme = gMeme
+
+function saveMemeToStorage() {
+    saveToStorage(KEY_SAVE_MEME, gSaveMeme)
 }
 
 /// set language

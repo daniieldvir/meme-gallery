@@ -140,6 +140,14 @@ li.active {
     align-items: center;
 }
 
+#search-text {
+    background-image: url(/img/search.png);
+    background-position: right;
+    padding-left: 30px;
+    background-size: 17px;
+    background-repeat: no-repeat;
+}
+
 .search-more {
     display: flex;
     justify-content: center;

@@ -7,11 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="./css/style.css" rel="stylesheet" />
     <link href="./css/mobile-nav.css" rel="stylesheet" />
-
     <title>Build Your Memo</title>
 </head>
-
-
 <body onload="onInit()">
     <div class="main-screen" onclick="toggleMenu()"></div>
     <nav class="nav-container container">
@@ -21,7 +18,6 @@
             <li><a class="nav-memes" data-trans="memes" onclick="onGoToMemesPage()">Memes</a></li>
             <li><a class="nav-about" data-trans="about" onclick="onGoToAboutPage()">About</a></li>
             <li class="nav-lang">
-
                 <select class="sel-lang" onchange="onSetLang(this.value)">
                     <option value="en">English</option>
                     <option value="he">עברית</option>
@@ -30,13 +26,11 @@
         </ul>
         <button class="btn-menu" onclick="toggleMenu()">☰</button>
     </nav>
-
     <!-- SEARCH -->
     <section class="search-section">
         <div class="search-by-typing flex">
-            <input type="text" class="search" name="search" placeholder="Enter keyword"
-                onclick="onFilterPic(value)">
-            <img src="/img/search.png" class="filter-btn">
+            <input type="text" id="search-text" class="search" name="search" placeholder="Enter keyword" onclick="onFilterPic(value)">
+            <datalist>
             <option value="politic"></option>
             <option value="funny"></option>
             <option value="dog"></option>
@@ -51,64 +45,47 @@
             <option value="tv"></option>
             <option value="sport"></option>
             <option value="honesty"></option>
+        </datalist>
         </div>
         <div class="search-by-keywords"></div>
     </section>
-
-    
-
     <!-- GALLERY -->
     <section class="gallery-section">
         <container class="gallery-container grid-container"> </container>
     </section>
-
     <section class="editor-section">
         <container class="flex-container">
-            <div class="canvas-container" hidden>
+            <div class="canvas-container">
                 <canvas id="my-canvas" height="500" width="500"></canvas>
-
                 <div class="editor-container">
-                    <input class="text-input" data-trans="text-input" type="text"
-                        oninput="onChangeText(this.value)">
-
+                    <input class="text-input" data-trans="text-input" type="text" oninput="onChangeText(this.value)">
                     <div class="editor-btn-section">
                         <button class="btn-editor pointer" onclick="onDrawAnotherLine()">
                             <img class="editor-icon editor-pic-size" src="editor-img/add.png"></button>
-
                         <button class="btn-editor pointer" onclick="onSwitchLine()">
                             <img class="editor-icon editor-pic-size" src="editor-img/up-downe.png"></button>
-
                         <button class="btn-editor pointer" onclick="onUpDownLine(-3)">
                             <img class="editor-icon editor-pic-size" src="editor-img/arrow-up.png"></button>
-
                         <button class="btn-editor pointer" onclick="onUpDownLine(+3)">
                             <img class="editor-icon editor-pic-size" src="editor-img/arrow-down.png"></button>
-
                         <button class="btn-editor pointer" onclick="onClearText()">
                             <img class="editor-icon editor-pic-size" src="editor-img/trash.png"></button>
                     </div>
-
                     <div class="editor-btn-section">
-
                         <button class="btn-editor pointer" onclick="onChangeFontSize(2)">
                             <img class="editor-icon editor-pic-size" src="editor-img/increase_Font.png"></button>
-
                         <button class="btn-editor pointer" onclick="onChangeFontSize(-2)">
                             <img class="editor-icon editor-pic-size" src="editor-img/decrease_Font.png"></button>
-
                         <button class="btn-editor pointer" onclick="onChangeAlign('right')">
                             <img class="editor-icon editor-pic-size"
                                 src="editor-img/justify-align-to-left.png"></button>
-
                         <button class="btn-editor pointer" onclick="onChangeAlign('center')">
                             <img class="editor-icon editor-pic-size"
                                 src="editor-img/center-text-alignment.png"></button>
-
                         <button class="btn-editor pointer" onclick="onChangeAlign('left')">
                             <img class="editor-iconeditor-pic-size editor-pic-size"
                                 src="editor-img/justify-align-to-right.png"></button>
                     </div>
-
                     <div class="editor-btn-section">
                         <div class="editor-btn-section">
                             <select class="font-change pointer" onchange="onChangeFontType(value)">
@@ -118,7 +95,6 @@
                                 <option data-trans="nerko">Nerko</option>
                             </select>
                         </div>
-
                         <button class="btn-editor-fill">
                             <input class="input-color pointer" type=color value="#deb887"
                                 oninput="onChangeStrokeColor(value)">
@@ -129,14 +105,11 @@
                                 oninput="onChangeFillColor(value)">
                             <img class="editor-icon editor-pic-size-selection" src="editor-img/fill-color.png">
                         </button>
-
                     </div>
-
                     <!-- STICKERS -->
                     <section class="stickers-container">
                         <container class="stickers-container grid-container"> </container>
                     </section>
-
                     <div class="editor-btn-section">
                         <button class="save-memes-page pointer btn-editor" data-trans="save"
                             onclick="onSaveMemeToStorage()">Save</button>
@@ -146,7 +119,6 @@
                         <button class="share pointer" class="btn pointer" onclick="uploadImg()"><span
                                 class="share-container" data-trans="share"></span>
                         </button>
-
                     </div>
                     <div>
                         <button class="file-input-btn">
@@ -158,18 +130,14 @@
             </div>
         </container>
     </section>
-
     <!-- SAVE-MEMES-PAGE -->
-
     <main class="main-memes">
         <div>
             <h2 class="main-headline"></h2>
             <div class="save-memes-container"></div>
         </div>
     </main>
-
     <!-- ABOUT-PAGE -->
-
     <main class="main-about">
         <article class="about">
             <img src="img/camel1.jpeg" class="about-img">
@@ -177,42 +145,31 @@
                 <h2 data-trans="about-h2">About me.</h2>
                 <p class="paragraph1" data-trans="about-details-p1">My name is Camel.</p>
                 <p class="paragraph2" data-trans="about-details-p2">I am an 8 year old mixed breed dog, my mother
-                    adopted me at the age of six months.
-                </p>
+                    adopted me at the age of six months.</p>
                 <p class="paragraph2" data-trans="about-details-p3">
                     A month ago my mother told me that she was going to stay at home for a few months, I thought it
-                    would be fun and we would play all day and go for walks ... how I was wrong 🙈🙉🙊
-                </p>
+                    would be fun and we would play all day and go for walks ... how I was wrong 🙈🙉🙊</p>
                 <div class="about-contact">
                     <a href="https://www.linkedin.com/in/daniiel-dvir-06154769">
-                        <img class="linkedin" src="img/linkedin-logo.png" />
-                    </a>
-
+                        <img class="linkedin" src="img/linkedin-logo.png"/></a>
                     <a href="https://www.facebook.com/daniiel.dvir/">
-                        <img class="facebook" src="img/facebook-logo.png" />
-                    </a>
-
+                        <img class="facebook" src="img/facebook-logo.png"/></a>
                     <a href="https://github.com/daniieldvir">
-                        <img class="github" src="img/github-logo.png" />
-                    </a>
+                        <img class="github" src="img/github-logo.png"/></a>
                 </div>
             </div>
         </article>
-
     </main>
-
-
     <footer class="footer-container container">
         <img class="logo" src="img/logo.png" />
         <p data-trans="rights">all rights reserved 2019</p>
     </footer>
-
     <script src="js/storage-service.js"></script>
+    <script src="js/main.js"></script>
     <script src="js/meme-service.js"></script>
-    <script src="js/meme-editor-service.js"></script>
     <script src="js/meme-controller.js"></script>
     <script src="js/gallery-controller.js"></script>
+    <script src="js/gallery-service.js"></script>
     <script src="js/i18n-service.js"></script>
 </body>
-
 </html>
