@@ -141,7 +141,7 @@ li.active {
 }
 
 #search-text {
-    background-image: url(/img/search.png);
+    background-image: url(../img/search.png);
     background-position: right;
     padding-left: 30px;
     background-size: 17px;
